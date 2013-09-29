@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body ng-controller="DotToDotCtrl">
+<div>
+	<div>
+		<div ng-show="meAdded">Hello, {{me.name}}</div>
+		<div ng-hide="meAdded">
+			<input type="text" ng-model="me.name"/>
+			<button ng-click="addMe()">Add Me</button>
+		</div>
+		
+		<div>
+			<ul>
+				<li ng-repeat="user in users">{{user.name}}</li>
+			</ul>
+		</div>
+		<div style="border-style:solid;width:500px; height:500px">
+			<svg id="dot-board" width="100%" height="100%" ng-mousedown="mouseDown($event)"
+				ng-mousemove="onMouseMove($event)"
+				ng-mouseup="onMouseUp($event)">
+					<circle ng-repeat="dot in dots" 
+						cx="{{dot.cx}}" cy="{{dot.cy}}" r="{{dot.r}}" 
+						stroke="black" stroke-width="1" fill="lightgray"></circle>
+					<line ng-repeat="l in lines" 
+						x1="{{l.from.x}}"
+						y1="{{l.from.y}}"
+						x2="{{l.to.x}}"
+						y2="{{l.to.y}}"
+						style="stroke:rgb(255,0,0);stroke-width:2"></line>
+			</svg>
+		</div>
+	</div>
+</div>
+
+  
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src="//cdn.firebase.com/libs/angularfire/0.3.0/angularfire.min.js"></script>
+</body>
+</html>
