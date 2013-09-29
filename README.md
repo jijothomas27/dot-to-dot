@@ -1,16 +1,7 @@
-# angular-seed — the seed for AngularJS apps
+# Dot to Dot Game - A Childhood paper game built with AngularJS and Firebase
 
-This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
-You can use it to quickly bootstrap your angular webapp projects and dev environment for these
-projects.
-
-The seed contains AngularJS libraries, test libraries and a bunch of scripts all preconfigured for
-instant web development gratification. Just clone the repo (or download the zip/tarball), start up
-our (or yours) webserver and you are ready to develop and test your application.
-
-The seed app doesn't do much, just shows how to wire two controllers and views together. You can
-check it out by opening app/index.html in your browser (might not work file `file://` scheme in
-certain browsers, see note below).
+We used to play this game in school on paper. You have a grid of dots and you'll have to join the dots. 
+The person who closes the box, will have his name written on the box. Person with most boxes to their name wins
 
 _Note: While angular is client-side-only technology and it's possible to create angular webapps that
 don't require a backend server at all, we recommend hosting the project files using a local
