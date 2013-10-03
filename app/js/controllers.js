@@ -44,7 +44,7 @@ var DotToDotCtrl = function ($scope,$http,angularFire,angularFireCollection) {
 			  point.x = event.pageX - offset.left;
 			  point.y = event.pageY - offset.top;
 			  var lineto = point;
-			  $scope.lines.push({from:$scope.mouseStart,to:lineto});
+			  $scope.lines.push({from:$scope.mouseStart,to:lineto,color:$scope.me.color});
 			  $scope.mouseStart = lineto;
 		  }
 	  };
