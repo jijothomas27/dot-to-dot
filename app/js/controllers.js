@@ -8,7 +8,7 @@ var DotToDotCtrl = function ($scope,$http,angularFire,angularFireCollection) {
 	  $scope.messages = angularFireCollection(new Firebase("https://kuthuki-in.firebaseio.com/messages"),$scope.onMessage);
 	  
 	  $scope.users = [];
-	  $scope.me = {};
+	  $scope.me = null;
 	  $scope.meAdded = false;
 	  
 	  $scope.addMe = function () {
@@ -29,16 +29,19 @@ var DotToDotCtrl = function ($scope,$http,angularFire,angularFireCollection) {
 	  $scope.mouseEnd = {};
 	  $scope.isMouseDown = false;
 	  $scope.mouseDown = function (event) {
-		  $scope.isMouseDown = true;
-		  var offset = $('#dot-board').offset();
-		  var point = {};
-		  point.x = event.pageX - offset.left;
-		  point.y = event.pageY - offset.top;
-		  $scope.mouseStart = point;
+		  
+		  if($scope.me) {
+			  $scope.isMouseDown = true;
+			  var offset = $('#dot-board').offset();
+			  var point = {};
+			  point.x = event.pageX - offset.left;
+			  point.y = event.pageY - offset.top;
+			  $scope.mouseStart = point;
+		  }
 	  };
 	  
 	  $scope.onMouseMove = function (event) {
-		  if($scope.isMouseDown) {
+		  if($scope.me && $scope.isMouseDown) {
 			  var point = {};
 			  var offset = $('#dot-board').offset();
 			  point.x = event.pageX - offset.left;
@@ -70,8 +73,10 @@ var DotToDotCtrl = function ($scope,$http,angularFire,angularFireCollection) {
 	  }
 	  
 	  $scope.onMouseUp = function (event) {
-		  $scope.isMouseDown = false;
-		  $scope.mouseStart = {};
+		  if($scope.me) {
+			  $scope.isMouseDown = false;
+			  $scope.mouseStart = {};
+		  }
 	  };
 	  
 	  angularFire(usersRef, $scope, "users");	
