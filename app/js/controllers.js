@@ -13,6 +13,9 @@ var DotToDotCtrl = function ($scope,$http,angularFire,angularFireCollection) {
 	  
 	  $scope.addMe = function () {
 		  $scope.meAdded = true;
+		  if(!$scope.me.color) {
+			  $scope.me.color = "#000000";
+		  }
 		  $scope.users.push($scope.me);
 	  };
 	  $scope.lines = [];
